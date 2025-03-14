@@ -19,4 +19,5 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.REMOTE_PORT }}
           key: ${{ secrets.SERVER_SSH_KEY }}
+          passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           script: "cd /home/u744666870/domains/uapreporting.space && ./laravel-deploy.sh"
