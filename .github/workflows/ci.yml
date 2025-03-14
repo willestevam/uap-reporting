@@ -2,23 +2,21 @@ name: UAP Reporting CI
 on:
   push:
     branches:
-      - main
-
+      - production
+  pull_request:
+    branches:
+      - production
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout UAP Reporting
         uses: actions/checkout@v4
       - name: Deploy in production - Hostinger
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: "-rltgoDzvO"
-          SOURCE: "/home/u744666870/domains/uapreporting.space/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          port: ${{ secrets.REMOTE_PORT }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
           script: "cd /home/u744666870/domains/uapreporting.space && ./laravel-deploy.sh"
-      
