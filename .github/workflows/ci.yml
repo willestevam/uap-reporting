@@ -31,4 +31,9 @@ jobs:
           port: ${{ secrets.REMOTE_PORT }}
           key: ${{ secrets.APPLEBOY_SSH_PRIVATE_KEY_ED25519 }}
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
-          script: "cd ${{ secrets.TARGET }} && ./laravel-deploy.sh"
+          script: |
+            cd ${{ secrets.TARGET }}
+            (php artisan down) || true
+            php artisan migrate
+            php artisan up
+            echo "Aplication updated!"

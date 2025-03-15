@@ -594,7 +594,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
      */
     public function publicPath($path = '')
     {
-        return $this->joinPaths($this->publicPath ?: $this->basePath('public'), $path);
+        return $this->joinPaths($this->publicPath ?: $this->basePath('public_html'), $path);
     }
 
     /**
@@ -607,7 +607,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
     {
         $this->publicPath = $path;
 
-        $this->instance('path.public', $path);
+        $this->instance('path.public_html', $path);
 
         return $this;
     }
