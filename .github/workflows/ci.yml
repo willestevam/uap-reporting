@@ -22,12 +22,13 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: ${{ secrets.TARGET }}
+
       - name: Executando comandos SSH / Laravel - Hostinger
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.REMOTE_PORT }}
-          key: ${{ secrets.SERVER_SSH_PUBLIC_KEY }}
+          key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           script: "cd ${{ secrets.TARGET }} && ./laravel-deploy.sh"
