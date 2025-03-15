@@ -28,6 +28,6 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.REMOTE_PORT }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          key: ${{ secrets.SERVER_SSH_PUBLIC_KEY }}
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           script: "cd ${{ secrets.TARGET }} && ./laravel-deploy.sh"
