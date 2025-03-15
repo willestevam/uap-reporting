@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Baixando arquivos - Hostinger
         uses: actions/checkout@v4
-      - name: Deploy in production - Hostinger
-        uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           ARGS: "-rltgoDzvO"
