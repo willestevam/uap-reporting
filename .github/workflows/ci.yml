@@ -10,9 +10,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout UAP Reporting
-        uses: actions/checkout@v2
+      - name: Baixando arquivos - Hostinger
+        uses: actions/checkout@v4
       - name: Deploy in production - Hostinger
+        uses: easingthemes/ssh-deploy@main
+        end:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO"
+          SOURCE: "/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          TARGET: ${{ secrets.TARGET }}
+      - name: Executando comandos SSH / Laravel - Hostinger
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
@@ -20,4 +30,4 @@ jobs:
           port: ${{ secrets.REMOTE_PORT }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
-          script: "cd /home/u744666870/domains/uapreporting.space && ./laravel-deploy.sh"
+          script: "cd ${{ secrets.TARGET }} && ./laravel-deploy.sh"
