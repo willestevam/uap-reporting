@@ -17,7 +17,7 @@ jobs:
 
   deploy-development:
     runs-on: ubuntu-latest
-    enviroment:
+    environment:
       name: Development
       url: ${{ vars.URL }}
     needs: build
@@ -50,7 +50,7 @@ jobs:
             echo "Aplication updated!"
   deploy-production:
     runs-on: ubuntu-latest
-    enviroment:
+    environment:
       name: Production
       url: ${{ vars.URL }}
     needs: deploy-developer
