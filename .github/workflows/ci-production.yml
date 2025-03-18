@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Compilar aplicação
         run: echo Compilando aplicação #somente exemplo
-  deploy-production:
+  deploy-Production:
     runs-on: ubuntu-latest
     environment:
       name: Production
