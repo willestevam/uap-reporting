@@ -53,7 +53,7 @@ jobs:
     environment:
       name: Production
       url: ${{ vars.URL }}
-    needs: deploy-developer
+    needs: deploy-development
     steps:
       - name: Baixando arquivos na Hostinger // Checkout - [PROD]
         uses: actions/checkout@v1
