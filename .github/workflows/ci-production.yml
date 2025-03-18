@@ -12,14 +12,14 @@ jobs:
     steps:
       - name: Compilar aplicação
         run: echo Compilando aplicação #somente exemplo
-  deploy-Production:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: Production
       url: ${{ vars.URL }}
     steps:
       - name: Baixando arquivos na Hostinger // Checkout - [PROD]
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           ARGS: "-rltgoDzvO"
@@ -28,7 +28,6 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: ${{ vars.TARGET }} #folder on server
-
       - name: Executando comandos SSH - Laravel // Hostinger [PROD]
         uses: appleboy/ssh-action@master
         with:
