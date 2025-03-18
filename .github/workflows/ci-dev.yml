@@ -41,7 +41,7 @@ jobs:
           key: ${{ secrets.APPLEBOY_SSH_PRIVATE_KEY_ED25519 }}
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           script: |
-            cd ${{ secrets.TARGET }}
+            cd ${{ vars.TARGET }}
             (php artisan down) || true
             php artisan migrate
             php artisan db:seed
