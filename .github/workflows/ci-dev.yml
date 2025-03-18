@@ -27,7 +27,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-          TARGET: ${{ vars.TARGET }} #folder on server
+          TARGET: ${{ secrets.TARGET }} #folder on server
 
       - name: Executando comandos SSH - Laravel // Hostinger [DEV]
         uses: appleboy/ssh-action@master
@@ -38,7 +38,7 @@ jobs:
           key: ${{ secrets.APPLEBOY_SSH_PRIVATE_KEY_ED25519 }}
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           script: |
-            cd ${{ vars.TARGET }}
+            cd ${{ secrets.TARGET }}
             (php artisan down) || true
             php artisan migrate
             php artisan db:seed
