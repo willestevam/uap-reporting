@@ -1,8 +1,5 @@
 name: UAP Reporting CI
 on:
-  push:
-    branches:
-      - development
   pull_request:
     branches:
       - development
@@ -14,7 +11,7 @@ jobs:
       - name: Compilar aplicação
         run: echo Compilando aplicação #somente exemplo
 
-  deploy:
+  deploy-dev:
     runs-on: ubuntu-latest
     environment:
       name: Development
