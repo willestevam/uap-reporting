@@ -1,6 +1,6 @@
 name: UAP Reporting CI
 on:
-  pull_request:
+  push:
     branches:
       - development
 

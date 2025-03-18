@@ -1,8 +1,5 @@
 name: UAP Reporting CI
 on:
-  push:
-    branches:
-      - production
   pull_request:
     branches:
       - production
@@ -14,7 +11,9 @@ jobs:
         run: echo Compilando aplicação #somente exemplo
   deploy:
     runs-on: ubuntu-latest
-    
+    environment:
+      name: Production
+      url: ${{ vars.URL }}
     steps:
       - name: Baixando arquivos na Hostinger // Checkout - [PROD]
         uses: actions/checkout@v4
