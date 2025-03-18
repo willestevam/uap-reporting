@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Compilar aplicação
-      run: echo Compilando aplicação #somente exemplo
+        run: echo Compilando aplicação #somente exemplo
 
   deploy-development:
     runs-on: ubuntu-latest
