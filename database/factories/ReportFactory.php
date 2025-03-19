@@ -33,7 +33,7 @@ class ReportFactory extends Factory
             'zipcode' => $this->faker->postcode(),
             'country' => $this->faker->country(),
             'description' => $this->faker->paragraph(),
-            'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
+            'status' => $this->faker->randomElement(['pending', 'approved', 'rejected','fake']),
             'slug' => Str::slug($this->faker->sentence()),
             'latitude' => $this->faker->latitude(),
             'longitude' => $this->faker->longitude(),

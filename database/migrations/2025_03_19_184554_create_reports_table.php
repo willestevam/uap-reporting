@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('zipcode',10);
             $table->string('country',50);
             $table->text('description');
-            $table->enum('status',['pending','approved','rejected']);
+            $table->enum('status',['pending','approved','rejected','fake']);
             $table->string('slug',255);
             $table->string('latitude',50)->nullable();
             $table->string('longitude')->nullable();
