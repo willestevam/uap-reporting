@@ -2,6 +2,8 @@ name: UAP Reporting CI
 on:
   pull_request:
     branches: [production]
+  push: 
+    branches: [production]
 jobs:
   build:
     runs-on: ubuntu-latest
