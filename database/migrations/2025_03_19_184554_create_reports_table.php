@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('state',2);
             $table->string('zipcode',10);
             $table->string('country',50);
+            $table->string('subject',100);
             $table->text('description');
             $table->enum('status',['pending','approved','rejected','fake']);
             $table->string('slug',255);

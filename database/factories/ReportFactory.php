@@ -32,7 +32,7 @@ class ReportFactory extends Factory
             'state' => $this->faker->stateAbbr(),
             'zipcode' => $this->faker->postcode(),
             'country' => $this->faker->country(),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph(2,true),
             'status' => $this->faker->randomElement(['pending', 'approved', 'rejected','fake']),
             'slug' => Str::slug($this->faker->sentence()),
             'latitude' => $this->faker->latitude(),
