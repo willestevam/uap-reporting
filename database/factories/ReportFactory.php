@@ -22,7 +22,7 @@ class ReportFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'email' => $this->faker->safeEmail(),
             'sighting' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'street' => $this->faker->streetAddress(),
             'number' => $this->faker->buildingNumber(),
