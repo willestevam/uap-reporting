@@ -11,4 +11,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/uap-reportings', [ReportController::class ,'index'])->name('uap-reportings');
 Route::get('/uap-reporting/create', [ReportController::class ,'create'])->name('uap-reporting.create');
-Route::post('/uap-reporting', [ReportController::class, 'store']);
+Route::post('/uap-reportings', [ReportController::class, 'store']);
