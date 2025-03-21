@@ -61,6 +61,6 @@ class ReportController extends Controller
         }
 
         $report->save();
-        return redirect('/uap-reporting')->with('success','Relato salvo com sucesso!');
+        return redirect('/uap-reportings')->with('success','Relato salvo com sucesso!');
     }
 }
