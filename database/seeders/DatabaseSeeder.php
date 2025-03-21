@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->create([
             'name' => 'Anonymous Report',
-            'email' => 'anonymous@uforeporting.space',
+            'email' => 'anonymous@uapreporting.space',
         ]);
         User::factory(10)->create();
         Report::factory()->count(100)->create();

@@ -6,7 +6,7 @@
     <div class="col-md-6 offset-md-3">
         <h1>Informar avistamento</h1>
         <div class="box box-primary">
-            <form action="/ufo-reporting" role="form" method="POST" enctype="multipart/form-data">
+            <form action="/uap-reporting" role="form" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">

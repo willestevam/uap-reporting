@@ -11,11 +11,11 @@ class ReportController extends Controller
 {
     public function index()
     {
-        return view('pages.ufo-reportings');
+        return view('pages.uap-reportings');
     }
     public function create(){
         $data['form'] = fake();
-        return view('pages.ufo-reporting',['data' => $data]);
+        return view('pages.uap-reporting',['data' => $data]);
     }
     public function store(Request $request){
 
@@ -61,6 +61,6 @@ class ReportController extends Controller
         }
 
         $report->save();
-        return redirect('/ufo-reporting')->with('success','Relato salvo com sucesso!');
+        return redirect('/uap-reporting')->with('success','Relato salvo com sucesso!');
     }
 }

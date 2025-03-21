@@ -27,10 +27,10 @@
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/ufo-reportings" class="nav-link">Avistamentos</a>
+                            <a href="/uap-reportings" class="nav-link">Avistamentos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/ufo-reporting/create" class="nav-link">Informar avistamento</a>
+                            <a href="/uap-reporting/create" class="nav-link">Informar avistamento</a>
                         </li>
                         @auth
                         <li class="nav-item">

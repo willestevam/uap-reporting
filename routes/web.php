@@ -9,6 +9,6 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/ufo-reportings', [ReportController::class ,'index'])->name('ufo-reportings');
-Route::get('/ufo-reporting/create', [ReportController::class ,'create'])->name('ufo-reporting.create');
-Route::post('/ufo-reporting', [ReportController::class, 'store']);
+Route::get('/uap-reportings', [ReportController::class ,'index'])->name('uap-reportings');
+Route::get('/uap-reporting/create', [ReportController::class ,'create'])->name('uap-reporting.create');
+Route::post('/uap-reporting', [ReportController::class, 'store']);
