@@ -20,6 +20,7 @@ class ReportFactory extends Factory
     
     public function definition(): array
     {
+        $subject = $this->faker->sentence(rand(3, 6), true);
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->safeEmail(),
@@ -32,10 +33,10 @@ class ReportFactory extends Factory
             'state' => $this->faker->stateAbbr(),
             'zipcode' => $this->faker->postcode(),
             'country' => $this->faker->country(),
-            'subject' => $this->faker->sentence(),
-            'description' => $this->faker->paragraph(2,true),
+            'subject' => $subject,
+            'description' => $this->faker->paragraphs(2,true),
             'status' => $this->faker->randomElement(['pending', 'approved', 'rejected','fake']),
-            'slug' => Str::slug( $this->faker->sentence(), '-'),
+            'slug' => Str::slug( $subject, '-'),
             'latitude' => $this->faker->latitude(),
             'longitude' => $this->faker->longitude(),
             'visitor' => $this->faker->ipv4(),

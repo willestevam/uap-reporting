@@ -1,0 +1,130 @@
+/* 
+Cor principal: #062035
+Sucesso: #326996
+Alerta: #EB8F00
+Títulos: #AB792B
+
+Cor principal: #062035
+Sucesso/botão: #36536B
+Hover botão: #457caa
+Alerta: #E2EB00
+Títulos: #963532
+
+*/
+
+body{
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+header{
+    border-bottom: 1px solid #CCC;
+    background-image: url("/img/header.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 110px;
+    width: 100%;
+}
+#container{
+    margin: 15px 0;
+}
+footer{
+    text-align: center;
+    background-color: #062035;
+    color: #FFF;
+    padding: 30px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+h1 {
+    color:      #326996;
+}
+.row{
+    margin: 0;
+}
+#main-content {
+    margin: 10px 0;
+}
+
+.btn-primary{
+    background-color: #326996;
+    border: 2px solid #457caa(122, 34, 34);
+}
+.btn-primary:hover{
+    background-color:#457caa;
+    border: 2px solid #457caa (122, 34, 34, 0.404);
+}
+.navbar-brand{
+    width: 150px;
+}
+#navbar{
+    justify-content: space-between;
+    padding: 50px 0;
+    color: #FFF;
+}
+#navbar ul li a{ 
+    color: #f0f8ff;
+}
+
+#navbar ul li a:hover{
+    color: #c2d2ff;
+}
+/* Search container */
+#search-container{
+    background-image: url("/img/banner-search.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    padding: 50px;
+    text-align: center;
+}
+#search-container h1{
+    color: #f08f34;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+#search-container form{
+    width: 50%;
+    margin: 0 auto;
+}
+/* Training list */
+#trainings-container{
+    padding: 50px;
+}
+/* Training list */
+#trainings-container .card{
+    flex: 1 1 24%;
+    max-width: 24%;
+    border-radius: 10px;
+    padding: 0;
+    margin: .5%;
+}
+#trainings-container img{
+   max-height: 150px;
+   border-radius: 10px 10px 0 0;
+}
+#cards-container{
+    display: flex;
+}
+
+.success-save {
+    background-color: aquamarine;
+    color: darkgreen;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #17410a;
+}
+
+.training-container {
+    margin-top: 30px;
+}
+#image-container img {
+    border-radius: 10px;
+}
+.training-date {
+    font-size: 12px;
+    color: rgb(41, 40, 40);
+}
