@@ -65,6 +65,7 @@ h1 {
 }
 #navbar ul li a{ 
     color: #f0f8ff;
+    font-size: 14px;
 }
 
 #navbar ul li a:hover{

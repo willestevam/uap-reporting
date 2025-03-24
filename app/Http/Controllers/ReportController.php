@@ -29,6 +29,30 @@ class ReportController extends Controller
         $request->zipcode = $faker->postcode();
         $request->country = 'BR';
         
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email',
+            'sighting' => 'required',
+            'description' => 'required'
+            // 'street' => 'required',
+            // 'city' => 'required',
+            // 'state' => 'required',
+            // 'zipcode' => 'required',
+            // 'country' => 'required'
+        ];
+        $messages = [
+            'required' => 'Preenchimento obrigatório.',
+            'email' => 'Por favor, informe um e-mail válido.'
+            //'required' => 'Preencha o campo :attribute',,
+            // 'email.email' => 'O campo email deve ser um email válido',
+            // 'street.required' => 'O campo rua é obrigatório',
+            // 'city.required' => 'O campo cidade é obrigatório',
+            // 'state.required' => 'O campo estado é obrigatório',
+            // 'zipcode.required' => 'O campo CEP é obrigatório',
+            // 'country.required' => 'O campo país é obrigatório'
+        ];
+        $request->validate($rules,$messages);
+
         $report = new Report;
         $report->name = $request->name;
         $report->email = $request->email;
@@ -49,9 +73,6 @@ class ReportController extends Controller
         $report->subject = $request->city.' - '.$request->state.' - '.$request->country.' - '.str_replace('T',"-",$request->sighting).' - '.$request->name;
         $report->slug = Str::slug($report->subject, '-');
         $report->description = $request->description;
-        
-
-
 
         if (auth()->check()) {
             $user = auth()->user();
