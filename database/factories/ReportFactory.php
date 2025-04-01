@@ -37,8 +37,8 @@ class ReportFactory extends Factory
             'description' => $this->faker->paragraphs(2,true),
             'status' => $this->faker->randomElement(['pending', 'approved', 'rejected','fake']),
             'slug' => Str::slug( $subject, '-'),
-            'latitude' => $this->faker->latitude(),
-            'longitude' => $this->faker->longitude(),
+            'latitude' => $this->faker->latitude(-90,90),
+            'longitude' => $this->faker->longitude(-180,180),
             'visitor' => $this->faker->ipv4(),
             'user_id' => 1, // Or $this->faker->numberBetween(1, 10), if you have users
         ];

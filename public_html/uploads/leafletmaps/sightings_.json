@@ -1,0 +1,24 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "popupContent": "<img src='/img/ovni.jpg'><br><b>Autor</b>: Willian<br><b>Data</b>: 28/03/2025<br><b>Hora</b>: 20h30.<br><br>Avistamento XPTO até com 40 caracteres ocorrido.<br><br><a href='https://www.google.com'>Detalhes</a>"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-104.98999178409576, 39.74683938093904]
+            }
+        },{
+            "type": "Feature",
+            "properties": {
+                "popupContent": "20th & Welton Light Rail Stop"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-104.98689115047453, 39.747924136466565]
+            }
+        }
+    ]
+}

@@ -70,7 +70,9 @@ class Kernel implements KernelContract
      *
      * @deprecated
      */
-    protected $routeMiddleware = [];
+    protected $routeMiddleware = [
+        'access.log' => \App\Http\Middleware\AccessLogMiddleware::class,
+    ];
 
     /**
      * The application's middleware aliases.

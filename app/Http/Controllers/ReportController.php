@@ -6,16 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 
 class ReportController extends Controller
 {
     public function index()
     {
-        return view('pages.uap-reportings');
+        $reports = Report::where('status', 'approved')->orderByDesc('id')->paginate(50);
+        
+        return view('pages.home',['reports' => $reports]);
     }
     public function create(){
-        $data['form'] = fake();
-        return view('pages.uap-reporting',['data' => $data]);
+        
+        return view('pages.uap-reporting');
     }
     public function store(Request $request){
 
@@ -70,7 +73,7 @@ class ReportController extends Controller
         $report->longitude = $request->longitude;
         $report->visitor = request()->ip();
 
-        $report->subject = $request->city.' - '.$request->state.' - '.$request->country.' - '.str_replace('T',"-",$request->sighting).' - '.$request->name;
+        $report->subject = $request->city.' - '.$request->state.' - '.$request->country.' - '.$request->name.' - '.str_replace('T',"-",$request->sighting);
         $report->slug = Str::slug($report->subject, '-');
         $report->description = $request->description;
 
@@ -83,5 +86,45 @@ class ReportController extends Controller
 
         $report->save();
         return redirect('/uap-reportings')->with('success','Relato salvo com sucesso!');
+    }
+    public function json()
+    {
+        $reports = Report::where('status', 'approved')->orderByDesc('id')->paginate(500);
+        $json = [
+            'type' => 'FeatureCollection',
+            'features' => []
+        ];
+        
+        foreach ($reports as $report) {
+            $jsonInit['last'] = [
+                'author' => $report->name,
+                'latitude' => (float)$report->latitude,
+                'longitude' => (float)$report->longitude,
+            ];
+            $json['features'][] = [
+                'type' => 'Feature',
+                'properties' => [
+                    "author" => $report->name,
+                    "datetime"=> date('d/m/Y H:i', strtotime($report->sighting)),
+                    "description"=> Str::limit($report->description,100,"..."),
+                    //"image": "/uploads/reports/default.jpg",
+                    //"video": "youtube.com/watch?v=example",
+                    "id"=> $report->id,
+                    "slug"=> $report->slug
+                ],
+                'geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [
+                        (float)$report->longitude,
+                        (float)$report->latitude
+                    ]
+                ]
+            ];
+        }
+        $fileStorePath = "/leafletmaps/";
+        $json = json_encode($json, JSON_PRETTY_PRINT);
+        Storage::disk('public')->put($fileStorePath."sightings.json", $json);
+        $json = json_encode($jsonInit, JSON_PRETTY_PRINT);
+        Storage::disk('public')->put($fileStorePath."initData.json", $json);
     }
 }

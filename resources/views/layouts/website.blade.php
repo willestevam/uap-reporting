@@ -9,14 +9,15 @@
         <!-- Fonte do Google -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
 
-
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
         <!-- CSS Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
         <!-- CSS da aplicação -->
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-        <script src="{{ asset('js/scripts.js') }}"></script>
     </head>
     <body>
         <header>
@@ -32,17 +33,14 @@
                         <li class="nav-item">
                             <a href="/uap-reporting/create" class="nav-link">Informar avistamento</a>
                         </li>
-                        @auth
-                        <li class="nav-item">
-                            <a href="/admin/user/profile" class="nav-link">Meus dados</a>
-                        </li>
+                        @auth                        
                         <li class="nav-item">
                             <a href="/admin/trainings/create" class="nav-link">Cadastrar avistamento</a>
                         </li>
                         <li class="nav-item">
-                            <form action="/admin/logout" method="post">
+                            <form action="/logout" method="post">
                                 @csrf
-                                <a href="/admin/logout"
+                                <a href="/logout"
                                     onclick="event.preventDefault();
                                     this.closest('form').submit();" class="nav-link">Logout</a>
                             </form>
@@ -50,10 +48,10 @@
                         @endauth
                         @guest
                         <li class="nav-item">
-                            <a href="/admin/login" class="nav-link">Entrar</a>
+                            <a href="/login" class="nav-link">Entrar</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/register" class="nav-link">Cadastrar-se</a>
+                            <a href="/register" class="nav-link">Cadastrar-se</a>
                         </li>
                         @endguest
                     </ul>
@@ -61,11 +59,15 @@
             </nav>
         </header>
         <section id="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
             @yield('content')
+            </div>
+        </div>
         </section>
         <footer>
             <p>Meta Sighting &copy; 2025</p>
         </footer>
-        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+        <script src="{{ asset('js/scripts.js') }}"></script>
     </body>
 </html>

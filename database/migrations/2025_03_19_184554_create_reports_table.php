@@ -23,13 +23,13 @@ return new class extends Migration
             $table->string('city');
             $table->string('state',2);
             $table->string('zipcode',10);
-            $table->string('country',50);
+            $table->string('country',100);
             $table->string('subject',100);
             $table->text('description');
             $table->enum('status',['pending','approved','rejected','fake']);
             $table->string('slug',255);
-            $table->string('latitude',50)->nullable();
-            $table->string('longitude')->nullable();
+            $table->string('latitude',15)->nullable();
+            $table->string('longitude',15)->nullable();
             $table->ipAddress('visitor');
             $table->foreignId('user_id')->default(1);
             $table->timestamps();

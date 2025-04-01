@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'anonymous@uapreporting.space',
         ]);
         User::factory(10)->create();
-        Report::factory()->count(100)->create();
+        Report::factory()->count(1000)->create();
 
         
     }
