@@ -19,7 +19,6 @@ function error(err) {
         initMap(data.last.latitude, data.last.longitude);
         console.log("Author: "+ data.last.author +" / Using default location: " + data.last.latitude + ", " + data.last.longitude);
     });
-    
 }
   
 navigator.geolocation.getCurrentPosition(success, error, options);
