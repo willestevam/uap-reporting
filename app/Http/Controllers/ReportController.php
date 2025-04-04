@@ -92,11 +92,6 @@ class ReportController extends Controller
         $reports = Report::where('status', 'approved')->orderByDesc('id')->paginate(500);
 
         foreach ($reports as $report) {
-            $jsonInit['last'] = [
-                'author' => $report->name,
-                'latitude' => (float)$report->latitude,
-                'longitude' => (float)$report->longitude,
-            ];
             $json[] = [
                     "author" => $report->name,
                     "datetime"=> date('d/m/Y H:i', strtotime($report->sighting)),
