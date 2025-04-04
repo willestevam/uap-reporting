@@ -90,36 +90,25 @@ class ReportController extends Controller
     public function json()
     {
         $reports = Report::where('status', 'approved')->orderByDesc('id')->paginate(500);
-        $json = [
-            'type' => 'FeatureCollection',
-            'features' => []
-        ];
-        
+
         foreach ($reports as $report) {
             $jsonInit['last'] = [
                 'author' => $report->name,
                 'latitude' => (float)$report->latitude,
                 'longitude' => (float)$report->longitude,
             ];
-            $json['features'][] = [
-                'type' => 'Feature',
-                'properties' => [
+            $json[] = [
                     "author" => $report->name,
                     "datetime"=> date('d/m/Y H:i', strtotime($report->sighting)),
                     "description"=> Str::limit($report->description,100,"..."),
                     //"image": "/uploads/reports/default.jpg",
                     //"video": "youtube.com/watch?v=example",
                     "id"=> $report->id,
-                    "slug"=> $report->slug
-                ],
-                'geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [
-                        (float)$report->longitude,
-                        (float)$report->latitude
-                    ]
-                ]
-            ];
+                    "slug"=> $report->slug,
+                    "latitude"=> (float)$report->latitude,
+                    "longitude"=> (float)$report->longitude,
+                ];
+
         }
         $fileStorePath = "/leafletmaps/";
         $json = json_encode($json, JSON_PRETTY_PRINT);
